@@ -32,13 +32,13 @@ if submitted:
     if kilometrage <= 0 or litres <= 0:
         st.error("❌ Veuillez entrer un kilométrage et une quantité de litres valides (supérieurs à 0).")
     else:
-    now = datetime.now(tz)
-    datetime_plein = datetime.combine(date_plein, now.time(),tzinfo=tz)
-    nouveau_plein = {
-        "date": str(datetime_plein),  # contient heure avec microsecondes
-        "kilometrage": kilometrage,
-        "type": type_plein,
-        "litres": litres
+        now = datetime.now(tz)
+        datetime_plein = datetime.combine(date_plein, now.time(),tzinfo=tz)
+        nouveau_plein = {
+            "date": str(datetime_plein),  # contient heure avec microsecondes
+            "kilometrage": kilometrage,
+            "type": type_plein,
+            "litres": litres
     }
     data.append(nouveau_plein)
 
