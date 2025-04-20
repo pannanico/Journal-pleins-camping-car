@@ -27,8 +27,11 @@ with st.form("plein_form"):
         litres = st.number_input("Litres", min_value=0.0, step=0.1)
 
     submitted = st.form_submit_button("Ajouter le plein")
-
+    
 if submitted:
+    if kilometrage <= 0 or litres <= 0:
+        st.error("❌ Veuillez entrer un kilométrage et une quantité de litres valides (supérieurs à 0).")
+    else:
     now = datetime.now(tz)
     datetime_plein = datetime.combine(date_plein, now.time(),tzinfo=tz)
     nouveau_plein = {
