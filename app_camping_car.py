@@ -2,7 +2,10 @@ import streamlit as st
 import json
 import pandas as pd
 from datetime import datetime, date
+import pytz
 
+#définir le fuseau horaire
+tz = pytz.timezone("Europe/Paris")
 # Charger les données depuis le fichier JSON (si le fichier existe)
 try:
     with open('carburant.json', 'r') as f:
@@ -26,8 +29,8 @@ with st.form("plein_form"):
     submitted = st.form_submit_button("Ajouter le plein")
 
 if submitted:
-    now = datetime.now()
-    datetime_plein = datetime.combine(date_plein, now.time())
+    now = datetime.now(tz)
+    datetime_plein = datetime.combine(date_plein, now.time(),tzinfo=tz)
     nouveau_plein = {
         "date": str(datetime_plein),  # contient heure avec microsecondes
         "kilometrage": kilometrage,
